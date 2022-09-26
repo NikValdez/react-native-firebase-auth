@@ -9,12 +9,17 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.4.0",
+    "@react-navigation/native": "^6.0.13",
     "expo": "~46.0.9",
+    "expo-font": "~10.2.0",
     "expo-status-bar": "~1.4.0",
     "nativewind": "^2.0.10",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-native": "0.69.5",
+    "react-native-safe-area-context": "4.3.1",
+    "react-native-screens": "~3.15.0",
     "react-native-web": "~0.18.7"
   },
   "devDependencies": {
