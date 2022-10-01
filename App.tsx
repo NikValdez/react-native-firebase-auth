@@ -1,10 +1,9 @@
 /// <reference types="nativewind/types" />
-import { StatusBar } from "expo-status-bar"
-import { Text, TextInput, View, StyleSheet, Pressable, Image } from "react-native"
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import SignIn from "./src/screens/SignIn"
+import React from 'react';
+import './src/config/firebase';
+import RootNavigation from './src/navigation';
 import { useFonts } from 'expo-font'
+
 export default function App() {
   const [loaded] = useFonts({
     "Montserrat-Black": require("./assets/fonts/Montserrat-Black.ttf"),
@@ -32,31 +31,8 @@ export default function App() {
     return null
   }
 
-function HomeScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
-  return (
-  <NavigationContainer >
-      <Tab.Navigator screenOptions={{headerShown: false}}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-        <Tab.Screen name="Signin" component={SignIn} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <RootNavigation />
   )
 
 }

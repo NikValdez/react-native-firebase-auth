@@ -4,18 +4,17 @@ import Icon from '@expo/vector-icons/MaterialCommunityIcons'
 import { Image, Pressable, StyleSheet, TextInput, Text, View } from 'react-native';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 import { StackScreenProps } from '@react-navigation/stack';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const auth = getAuth();
 
-function SignInScreen<StackScreenProps>({ navigation }) {
+function SignUpScreen<StackScreenProps>({ navigation }) {
   const [value, setValue] = React.useState({
     email: '',
     password: '',
     error: ''
   })
 
-  async function signIn() {
+  async function signUp() {
     if (value.email === '' || value.password === '') {
       setValue({
         ...value,
@@ -25,7 +24,8 @@ function SignInScreen<StackScreenProps>({ navigation }) {
     }
 
     try {
-      await signInWithEmailAndPassword(auth, value.email, value.password);
+      await createUserWithEmailAndPassword(auth, value.email, value.password);
+      navigation.navigate('Sign In');
     } catch (error) {
       setValue({
         ...value,
@@ -39,7 +39,7 @@ function SignInScreen<StackScreenProps>({ navigation }) {
       <View className="mx-4 h-5/6 flex justify-center align-center space-y-6">
         <Image source={logo} style={{ width: 100, height: 100, alignSelf: "center" }} />
         <Text className="block  font-title text-2xl font-bold text-center text-white">
-          Sign In
+          Sign Up
         </Text>
 
         <View className="space-y-6" >
@@ -64,15 +64,15 @@ function SignInScreen<StackScreenProps>({ navigation }) {
               />
             </View>
           </View>
-          <Pressable className="bg-background border border-white rounded-3xl py-2 px-4 m-4" ><Text className="text-center text-white font-bold text-base" onPress={signIn}>Sign In</Text></Pressable>
+          <Pressable className="bg-background border border-white rounded-3xl py-2 px-4 m-4" ><Text className="text-center text-white font-bold text-base" onPress={signUp}>Sign Up</Text></Pressable>
         </View>
-        <Text className="text-center text-white font-main text-base">Don't Have an account? <Text className="text-blue" onPress={() => navigation.navigate('Sign Up')}>Sign Up</Text></Text>
+        <Text className="text-center text-white font-main text-base">Have an account? <Text className="text-blue" onPress={() => navigation.navigate('Sign In')}>Sign In</Text></Text>
       </View>
     </View>
   );
 }
 
-export default SignInScreen;
+export default SignUpScreen;
 
 
 
