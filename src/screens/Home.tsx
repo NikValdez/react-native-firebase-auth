@@ -1,11 +1,12 @@
 import React from 'react';
-import { Text, View, Pressable } from 'react-native';
+import { Modal, Text, View, Pressable } from 'react-native';
 import { useAuth } from '../hooks/useAuth';
 import { getAuth, signOut } from 'firebase/auth';
 
 const auth = getAuth();
 
 export default function HomeScreen() {
+  const [modalVisible, setModalVisible] = React.useState(false);
   const { user } = useAuth();
 
   return (
