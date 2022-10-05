@@ -12,8 +12,8 @@ export default function AuthStack() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        screenOptions={{
-          cardStyle: {
+          screenOptions={{
+             cardStyle: {
             backgroundColor: '#0e1529'
           },
           headerShown: false

@@ -4,6 +4,7 @@ export default {
   "expo": {
     "name": "legal-call",
     "slug": "legal-call",
+    "privacy": "public",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
